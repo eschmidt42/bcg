@@ -1,7 +1,6 @@
 {
   "bcg": {
     "Overview": "/",
-    "module name here": "/core",
     "Tests": "/tests"
   }
 }
