@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Tests
+      title: Linear models & causaling
       url: /tests
     output: web
     title: bcg

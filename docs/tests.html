@@ -1,12 +1,12 @@
 ---
 
-title: Tests
+title: Linear models & causaling
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Test ... test ... test ..."
-description: "Test ... test ... test ..."
+summary: "Generating observational data using a linear model and estimating the causal effect."
+description: "Generating observational data using a linear model and estimating the causal effect."
 ---
 <!--
 
@@ -163,12 +163,18 @@ description: "Test ... test ... test ..."
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Regression-&amp;-dowhy-things-for-the-linear_dataset">Regression &amp; dowhy things for the <code>linear_dataset</code><a class="anchor-link" href="#Regression-&amp;-dowhy-things-for-the-linear_dataset"> </a></h2>
+<h2 id="Creating-data-using-a-linear-model">Creating data using a linear model<a class="anchor-link" href="#Creating-data-using-a-linear-model"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Contains:</p>
+<ul>
+<li>data generation with a linear model using <a href="/bcg/tests#create_linear_dataset"><code>create_linear_dataset</code></a></li>
+<li>generating a <code>nx</code> graph to model the generated data using <a href="/bcg/tests#create_nxgraph"><code>create_nxgraph</code></a></li>
+</ul>
+<p>Graph variable naming scheme:</p>
 <ul>
 <li><code>v</code>: treatment</li>
 <li><code>y</code>: outcome</li>
@@ -619,8 +625,7 @@ output: $y = t \cdot eta + W \cdot c_2 + X \cdot c_e \cdot t$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Basic analysis</p>
-
+<h2 id="Doing-some-basic-analysis">Doing some basic analysis<a class="anchor-link" href="#Doing-some-basic-analysis"> </a></h2>
 </div>
 </div>
 </div>
@@ -1030,7 +1035,7 @@ $\displaystyle 4000$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Random-forest-and-feature-importance">Random forest and feature importance<a class="anchor-link" href="#Random-forest-and-feature-importance"> </a></h3>
+<h2 id="Computing-feature-importance-and-partial-dependency">Computing feature importance and partial dependency<a class="anchor-link" href="#Computing-feature-importance-and-partial-dependency"> </a></h2>
 </div>
 </div>
 </div>
@@ -1655,18 +1660,7 @@ Wall time: 555 ms
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="dowhy-things">dowhy things<a class="anchor-link" href="#dowhy-things"> </a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Next:</p>
-<ul>
-<li>look into how the <code>linear_data</code> generates data exactly</li>
-<li>figure out what the output of <code>identify_effect</code> and <code>estimate_effect</code> mean</li>
-</ul>
-
+<h2 id="Computing-and-refusing-causal-estimates">Computing and refusing causal estimates<a class="anchor-link" href="#Computing-and-refusing-causal-estimates"> </a></h2>
 </div>
 </div>
 </div>
