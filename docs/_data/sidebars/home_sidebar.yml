@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: Linear models & causaling
       url: /basics
+    - output: web,pdf
+      title: Linear models & causaling - v2
+      url: /basics_v2
     output: web
     title: bcg
   output: web
