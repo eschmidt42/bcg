@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Linear models & causaling
-      url: /tests
+      url: /basics
     output: web
     title: bcg
   output: web
