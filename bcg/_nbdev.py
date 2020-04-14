@@ -10,14 +10,18 @@ index = {"stochastically_convert_to_binary": "00_basics.ipynb",
          "plot_partial_dependency": "00_basics.ipynb",
          "plot_target_vs_rest": "01_basics_v2.ipynb",
          "plot_var_hists": "01_basics_v2.ipynb",
+         "show_correlations": "01_basics_v2.ipynb",
          "get_Xy": "01_basics_v2.ipynb",
+         "get_model_feel": "01_basics_v2.ipynb",
          "get_partial_dependencies": "01_basics_v2.ipynb",
          "plot_partial_dependencies": "01_basics_v2.ipynb",
          "GraphGenerator": "01_basics_v2.ipynb",
          "get_only_Xi_to_Y": "01_basics_v2.ipynb",
          "GraphGenerator.get_only_Xi_to_Y": "01_basics_v2.ipynb",
          "vis_g": "01_basics_v2.ipynb",
-         "GraphGenerator.vis_g": "01_basics_v2.ipynb"}
+         "GraphGenerator.vis_g": "01_basics_v2.ipynb",
+         "get_gml": "01_basics_v2.ipynb",
+         "GraphGenerator.get_gml": "01_basics_v2.ipynb"}
 
 modules = ["basics.py",
            "basics_v2.py"]
