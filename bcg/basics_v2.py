@@ -39,9 +39,10 @@ def show_correlations(obs:pd.DataFrame, method:str='spearman'):
     cols = obs.columns
     n = len(cols)
     fig, ax = plt.subplots(figsize=(8,8))
-    ax.imshow(obs.corr(method=method))
+    im = ax.imshow(obs.corr(method=method))
     ax.set(xticks=range(n), xticklabels=cols,
            yticks=range(n), yticklabels=cols)
+    fig.colorbar(im, ax=ax, shrink=.6, label=f'{method} correlation')
     plt.show()
 
 # Cell
