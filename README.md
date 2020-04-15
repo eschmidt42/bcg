@@ -29,9 +29,7 @@ Material which helped my introductory reading so far by :
 **Technical note**:
 In order to run this notebook, you'll need a symbolic link from `/notebooks/bcg` to `./bcg`.
 
-## Small example
-
-### Data generating model: $ Y = a \cdot X_0 ^ b + c + X_1 $
+## Small example using $ Y = a \cdot X_0 ^ b + c + X_1 $ to generate observations
 
 ```python
 n = 1000
@@ -116,11 +114,11 @@ plot_target_vs_rest(obs)
 ```
 
 
-![png](docs/images/output_7_0.png)
+![png](docs/images/output_6_0.png)
 
 
 
-![png](docs/images/output_7_1.png)
+![png](docs/images/output_6_1.png)
 
 
 ```python
@@ -128,15 +126,15 @@ plot_var_hists(obs)
 ```
 
 
-![png](docs/images/output_8_0.png)
+![png](docs/images/output_7_0.png)
 
 
 
-![png](docs/images/output_8_1.png)
+![png](docs/images/output_7_1.png)
 
 
 
-![png](docs/images/output_8_2.png)
+![png](docs/images/output_7_2.png)
 
 
 ```python
@@ -144,7 +142,7 @@ show_correlations(obs)
 ```
 
 
-![png](docs/images/output_9_0.png)
+![png](docs/images/output_8_0.png)
 
 
 ## Generating the probably simplest possible causal graphical model
@@ -167,7 +165,7 @@ gg.vis_g(g)
 ```
 
 
-![png](docs/images/output_13_0.png)
+![png](docs/images/output_12_0.png)
 
 
 ```python
@@ -191,10 +189,10 @@ causal_model.view_model()
 
 
 
-![png](docs/images/output_16_1.png)
+![png](docs/images/output_15_1.png)
 
 
-Identifying the estimant
+### Identifying the estimant
 
 ```python
 identified_estimand = causal_model.identify_effect(proceed_when_unidentifiable=True)
@@ -221,7 +219,7 @@ print(identified_estimand)
     
 
 
-Computing the causal treatment estimate
+### Computing the causal treatment estimate
 
 ```python
 method_name = 'backdoor.linear_regression'
@@ -270,7 +268,7 @@ print(causal_estimate)
     
 
 
-Trying to poke holes into the causal treatment effect
+### Trying to poke holes into the causal treatment effect
 
 ```python
 method_name = 'placebo_treatment_refuter'
