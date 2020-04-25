@@ -303,7 +303,7 @@ description: "Playground unfinished for causal modelling on various kinds of gen
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Data-generating-model:-$-Y-=-V-\cdot-\beta-+-W-\cdot-c_2-+-X-\cdot-c_e-\cdot-V$$-$">Data generating model: $ Y = V \cdot \beta + W \cdot c_2 + X \cdot c_e \cdot V$$ $<a class="anchor-link" href="#Data-generating-model:-$-Y-=-V-\cdot-\beta-+-W-\cdot-c_2-+-X-\cdot-c_e-\cdot-V$$-$"> </a></h3><p>with 
+<h3 id="Data-generating-model:-$-Y-=-V-\cdot-\beta-+-W-\cdot-c_2-+-X-\cdot-c_e-\cdot-V-$">Data generating model: $ Y = V \cdot \beta + W \cdot c_2 + X \cdot c_e \cdot V $<a class="anchor-link" href="#Data-generating-model:-$-Y-=-V-\cdot-\beta-+-W-\cdot-c_2-+-X-\cdot-c_e-\cdot-V-$"> </a></h3><p>with 
 {% raw %}
 $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 {% endraw %}</p>
@@ -360,7 +360,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCauses" class="doc_header"><code>class</code> <code>CommonCauses</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L34" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCauses</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'W'</code></em>, <strong><code>n_common_causes</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7fa31ff8aad0&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="CommonCauses" class="doc_header"><code>class</code> <code>CommonCauses</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L34" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCauses</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'W'</code></em>, <strong><code>n_common_causes</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7f5d6309d310&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -384,7 +384,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Instruments" class="doc_header"><code>class</code> <code>Instruments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L41" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Instruments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'Z'</code></em>, <strong><code>n_instruments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_p</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7fa31f9f3a50&gt;</code></em>, <strong><code>rv_p_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="Instruments" class="doc_header"><code>class</code> <code>Instruments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L41" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Instruments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'Z'</code></em>, <strong><code>n_instruments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_p</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7f5d62af6850&gt;</code></em>, <strong><code>rv_p_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -408,7 +408,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="EffectModifiers" class="doc_header"><code>class</code> <code>EffectModifiers</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L48" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>EffectModifiers</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'X'</code></em>, <strong><code>n_eff_mods</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7fa31f9f3a50&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="EffectModifiers" class="doc_header"><code>class</code> <code>EffectModifiers</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L48" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>EffectModifiers</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'X'</code></em>, <strong><code>n_eff_mods</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7f5d62af6850&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -432,7 +432,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Treatments" class="doc_header"><code>class</code> <code>Treatments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L55" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Treatments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'V'</code></em>, <strong><code>n_treatments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7fa31ff8aad0&gt;</code></em>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="Treatments" class="doc_header"><code>class</code> <code>Treatments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L55" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Treatments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'V'</code></em>, <strong><code>n_treatments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7f5d6309d310&gt;</code></em>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
