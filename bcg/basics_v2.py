@@ -4,8 +4,8 @@ __all__ = ['GenVars', 'CommonCauses', 'Instruments', 'EffectModifiers', 'Treatme
            'get_obs', 'initialize', 'get_obs', 'generate', 'initialize', 'get_obs', 'generate',
            'stochastically_convert_to_binary', 'initialize', 'generate', 'get_obs', 'Outcomes', 'plot_target_vs_rest',
            'plot_var_hists', 'show_correlations', 'get_Xy', 'get_model_feel', 'get_feature_importance',
-           'get_partial_dependencies', 'plot_partial_dependencies', 'GraphGenerator', 'get_only_Xi_to_Y', 'vis_g',
-           'get_gml']
+           'get_partial_dependencies', 'plot_partial_dependencies', 'GraphGenerator', 'get_only_Xi_to_Y',
+           'get_Xi_to_Y_with_ccs_and_such', 'vis_g', 'get_gml']
 
 # Cell
 import matplotlib as mpl
@@ -379,8 +379,39 @@ def get_only_Xi_to_Y(self):
 GraphGenerator.get_only_Xi_to_Y = get_only_Xi_to_Y
 
 # Cell
-def vis_g(self, g:nx.DiGraph): nx.draw_spectral(g, with_labels=True)
+import itertools
+def get_Xi_to_Y_with_ccs_and_such(self, common_cause='W', effect_modifier='X',
+                                  treatment='V', instrument='Z'):
+    '''
+    common cause → treatment
+    common cause → outcome/target
+    treatment → outcome/target
+    instrument → treatment
+    effect modifier → outcome/target
+    '''
+    g = nx.DiGraph()
+    ccs = [v for v in self.not_targets if v.startswith(common_cause)]
+    ems = [v for v in self.not_targets if v.startswith(effect_modifier)]
+    treats = [v for v in self.not_targets if v.startswith(treatment)]
+    inss = [v for v in self.not_targets if v.startswith(instrument)]
 
+    g.add_edges_from([(cc, treat) for cc, treat in itertools.product(ccs, treats)])
+    g.add_edges_from([(cc, self.target) for cc in ccs])
+    g.add_edges_from([(treat, self.target) for treat in treats])
+    g.add_edges_from([(ins, treat) for ins, treat in itertools.product(inss, treats)])
+    g.add_edges_from([(em, self.target) for em in ems])
+    return g
+
+
+GraphGenerator.get_Xi_to_Y_with_ccs_and_such = get_Xi_to_Y_with_ccs_and_such
+
+# Cell
+def vis_g(self, g:nx.DiGraph, kind:str='spectral'):
+    try:
+        layout = getattr(nx, f'{kind}_layout')(g)
+    except AttributeError as ae:
+        raise AttributeError(f'No nx.{kind}_layout found')
+    nx.draw(g, layout=layout, with_labels=True)
 GraphGenerator.vis_g = vis_g
 
 # Cell
