@@ -1,8 +1,6 @@
 # Bayesian Causal Graphs - BCG
-> This is a pet project for me to get an inkling of an understanding of what Bayesian Causal Graphs are, what they are useful for and how to use them practically. So sudden changes are to be expected.
+> Playing with Bayesian Causal Graphs.
 
-
-The very basics I have started with are outlined in the notebook `01_basics_v2.ipynb` with the title 'Linear models & causaling - v2'. There is another notebook, but we shall not speak of it and I plan to remove it soon.
 
 The main references have so far been the following:
 
