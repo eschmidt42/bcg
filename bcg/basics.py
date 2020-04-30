@@ -17,6 +17,7 @@ import networkx as nx
 from sklearn import ensemble, metrics
 import dowhy as dw
 from typing import List, Union
+import itertools
 
 # Cell
 class GenVars:
@@ -379,7 +380,6 @@ def get_only_Xi_to_Y(self):
 GraphGenerator.get_only_Xi_to_Y = get_only_Xi_to_Y
 
 # Cell
-import itertools
 def get_Xi_to_Y_with_ccs_and_such(self, common_cause='W', effect_modifier='X',
                                   treatment='V', instrument='Z'):
     '''

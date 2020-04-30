@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: Linear models & causaling
       url: /basics
+    - output: web,pdf
+      title: Inspecting the infant health and development program (IHDP)
+      url: /ihdp
     output: web
     title: bcg
   output: web
