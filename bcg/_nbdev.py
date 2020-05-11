@@ -40,9 +40,14 @@ index = {"GenVars": "00_basics.ipynb",
          "vis_g": "00_basics.ipynb",
          "GraphGenerator.vis_g": "00_basics.ipynb",
          "get_gml": "00_basics.ipynb",
-         "GraphGenerator.get_gml": "00_basics.ipynb"}
+         "GraphGenerator.get_gml": "00_basics.ipynb",
+         "CausalGraph": "02_causal_model.ipynb",
+         "view_graph": "02_causal_model.ipynb",
+         "CausalGraph.view_graph": "02_causal_model.ipynb",
+         "CausalModel": "02_causal_model.ipynb"}
 
-modules = ["basics.py"]
+modules = ["basics.py",
+           "causal_model.py"]
 
 doc_url = "https://fastai.github.io/bcg/"
 

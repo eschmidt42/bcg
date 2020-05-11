@@ -2,6 +2,7 @@
   "bcg": {
     "Overview": "/",
     "Linear models & causaling": "/basics",
-    "Inspecting the infant health and development program (IHDP)": "/ihdp"
+    "Inspecting the infant health and development program (IHDP)": "/ihdp",
+    "Causal Model": "/causal_model"
   }
 }
