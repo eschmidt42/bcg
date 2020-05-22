@@ -2,7 +2,7 @@
 
 __all__ = ['CausalGraph', 'show_graph', 'view_graph', 'get_ancestors', 'cut_edges', 'get_causes', 'get_instruments',
            'get_effect_modifiers', 'CausalModel', 'identify_effect', 'construct_backdoor',
-           'construct_instrumental_variable', 'RegressionEstimator', 'get_Xy', 'estimate_effect']
+           'construct_instrumental_variable', 'RegressionEstimator', 'get_Xy_with_products', 'estimate_effect']
 
 # Cell
 import dowhy as dw
@@ -258,7 +258,8 @@ class RegressionEstimator:
         if reset:
             self.m.fit(X[:,self._ix],y)
 
-    def estimate_effect(self, X:np.ndarray, treatment:Union[int, float], control:Union[int, float]):
+    def estimate_effect(self, X:np.ndarray, treatment:Union[int, float], control:Union[int, float],
+                        y:np.ndarray=None):
         n, _ = X.shape
         _X = X.copy()
         _X[:, self.ix] = treatment
@@ -274,7 +275,7 @@ class RegressionEstimator:
         return ate
 
 # Cell
-def get_Xy(obs:pd.DataFrame, target:str='Y', feature_product_groups:List[list]=None):
+def get_Xy_with_products(obs:pd.DataFrame, target:str='Y', feature_product_groups:List[list]=None):
     'feaure_product_groups (e.g. [["V0", "V1", "W0"], ["X0", "X1"]]) to compute products between each var in the first and second list (not within each list)'
     not_target = [c for c in obs.columns if c != target and c not in feature_product_groups[1]]
 #     out_cols = [col for col in obs.columns if col != target ]
@@ -300,13 +301,17 @@ def estimate_effect(self, estimands:dict, control_value:float,
                     treatment_name:str, treatment_value:float,
                     obs:pd.DataFrame, outcome:str='Y',
                     causal_method:str='backdoor',
-                    model:Union[sklearn.base.RegressorMixin,]=None, target_unit:str='ate',
-                    effect_modifiers:List[str]=None):
+                    model:Union[sklearn.base.RegressorMixin,sklearn.base.ClassifierMixin]=None, target_unit:str='ate',
+                    effect_modifiers:List[str]=None,
+                    supervised_type_is_regression:bool=True):
     assert causal_method in {'backdoor', 'instrumental_variable'}
     assert target_unit == 'ate'
-
+    print('model', model)
     if model is None:
-        model = linear_model.LinearRegression()
+        if supervised_type_is_regression:
+            model = linear_model.LinearRegression()
+        else:
+            model = linear_model.LogisticRegression(solver='lbfgs')
 
     if effect_modifiers is None:
         effect_modifiers = self.effect_modifiers
@@ -314,14 +319,24 @@ def estimate_effect(self, estimands:dict, control_value:float,
     # decide on approach given causal_method and model_type
 
     # estimate the effect using the arrived on approach
-    X, y, not_outcome = get_Xy(obs, target=outcome, feature_product_groups=[treatments, effect_modifiers])
-    estimator = RegressionEstimator(model)
+    X, y, not_outcome = get_Xy_with_products(obs, target=outcome, feature_product_groups=[treatments, effect_modifiers])
+    if supervised_type_is_regression:
+        estimator = RegressionEstimator(model)
+    else:
+        estimator = PropensityScoreMatcher(model)
+
     ix = [v.lower() for v in not_outcome].index(treatment_name)
     confounders = self.treatments + list(estimands['observed_common_causes']) + effect_modifiers
     print('confounders', confounders)
     ix_confounders = [_i for _i,_v in enumerate(obs.columns.values) if _v in confounders]
     estimator.fit(X, y, ix, ix_confounders)
-    effect = estimator.estimate_effect(X=X, treatment=treatment_value, control=control_value)
+    effect = estimator.estimate_effect(X=X, treatment=treatment_value, control=control_value, y=y)
     return effect
 
 CausalModel.estimate_effect = estimate_effect
+
+# propensity_model = linear_model.LogisticRegression(solver='lbfgs')
+# estimator = PropensityScoreMatcher(propensity_model)
+# estimator.fit(X, y, ix=0, ix_confounders=[1, 2])
+# ate = estimator.estimate_effect(X=X, y=y, treatment=True, control=False)
+# print(f'ate = {ate:.3f}')

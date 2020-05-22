@@ -140,7 +140,6 @@ def stochastically_convert_to_binary(x:float):
 # Cell
 def initialize(self, rv:stats.rv_continuous, rv_kwargs:dict,
                cc:CommonCauses=None, ins:Instruments=None,
-               treatment_is_binary:bool=False,
                beta:Union[float, List[int], List[float], np.ndarray]=10):
     if not rv_kwargs:
         rv_kwargs = {'loc': 0, 'scale': 1}
@@ -149,12 +148,12 @@ def initialize(self, rv:stats.rv_continuous, rv_kwargs:dict,
     self.W = cc.obs.values.copy()
     self.n_instruments = ins.n_vars if ins is not None else 0
     self.Z = ins.obs.values.copy()
-    self.treatment_is_binary = treatment_is_binary
+
     if not isinstance(beta, (list, np.ndarray)):
         self.beta = np.repeat(beta, self.n_vars)
 
 
-def generate(self, n:int):
+def generate(self, n:int, treatment_is_binary:bool=False):
 
     t = self.rv.rvs(size=(n, self.n_vars))
 
@@ -174,17 +173,18 @@ def generate(self, n:int):
         t += self.Z @ cz
 
     # Converting treatment to binary if required
-    if self.treatment_is_binary:
+    if treatment_is_binary:
         t = np.vectorize(stochastically_convert_to_binary)(t)
 
     return t
 
 @classmethod
 def get_obs(self, n:int, n_treatments:int, cc:CommonCauses,
-            ins:Instruments, beta:Union[float, List[int], List[float], np.ndarray]):
+            ins:Instruments, beta:Union[float, List[int], List[float], np.ndarray],
+            treatment_is_binary:bool=False):
     treat = self(n_treatments=n_treatments, cc=cc, ins=ins,
                  beta=beta)
-    vals = treat.generate(n)
+    vals = treat.generate(n, treatment_is_binary=treatment_is_binary)
     treat.obs = pd.DataFrame(data=vals, columns=[f'{treat.name}{i}' for i in range(n_treatments)])
     return treat
 
@@ -199,6 +199,7 @@ class Outcomes:
 
     def generate(self, treat:Treatments, cc:CommonCauses,
                 em:EffectModifiers, outcome_is_binary:bool=False):
+        # TODO: there is a bug when treat.obs.shape[1] > 1 to lead y to become to long
         def _compute_y(t, W, X, beta, c2, ce):
             y =  t @ beta
             if cc.n_vars > 0:
@@ -209,7 +210,7 @@ class Outcomes:
 
         W = cc.obs.values
         X = em.obs.values
-        t = treat.obs.values
+        t = treat.obs.values.astype(float)
         beta = treat.beta
 
         range_c2 = max(beta) * .5
@@ -225,7 +226,7 @@ class Outcomes:
         y = _compute_y(t, W, X, beta, c2, ce)
 
         if outcome_is_binary:
-            y = np.vectorize(stochastically_convert_to_binary)(t)
+            y = np.vectorize(stochastically_convert_to_binary)(t).ravel()
 
         return y
 

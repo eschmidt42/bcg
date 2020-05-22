@@ -695,7 +695,7 @@ $\displaystyle \left\{\right\}$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">treatments</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;V0&#39;</span><span class="p">,</span> <span class="s1">&#39;V1&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">treatments</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;V0&#39;</span><span class="p">,]</span>  <span class="c1"># &#39;V1&#39;]</span>
 <span class="n">outcome</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
 <span class="n">common_causes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;W0&#39;</span><span class="p">]</span>
 <span class="n">effect_modifiers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X0&#39;</span><span class="p">]</span>
@@ -838,7 +838,7 @@ $\displaystyle \left\{\right\}$
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>causes: {&#39;treatments&#39;: {&#39;U&#39;, &#39;W0&#39;}, &#39;effects&#39;: {&#39;U&#39;, &#39;X0&#39;, &#39;W0&#39;}}
 common causes: {&#39;U&#39;, &#39;W0&#39;}
-Backdoor: Derivative(Expectation(Y | U,W0), [V0, V1])
+Backdoor: Derivative(Expectation(Y | U,W0), [V0])
 Instrumental variable: None
 </pre>
 </div>
@@ -850,7 +850,7 @@ Instrumental variable: None
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;observed_common_causes&#39;: {&#39;U&#39;, &#39;W0&#39;},
- &#39;backdoor&#39;: Derivative(Expectation(Y | U,W0), [V0, V1]),
+ &#39;backdoor&#39;: Derivative(Expectation(Y | U,W0), [V0]),
  &#39;instrumental_variable&#39;: None}</pre>
 </div>
 
@@ -1031,6 +1031,13 @@ Instrumental variable: None
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>TODO</strong>: test <code>PropensityScoreMatcher</code> on data generated using <code>bcg.basics</code> classes</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1142,9 +1149,9 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
         <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ix_confounders</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="bp">self</span><span class="o">.</span><span class="n">ix</span><span class="p">])</span>
                      
-    <span class="k">def</span> <span class="nf">estimate_effect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">treatment</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">control</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span>
-                        <span class="n">kind</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;ate&#39;</span><span class="p">):</span>
-        
+    <span class="k">def</span> <span class="nf">estimate_effect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">treatment</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">control</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span>
+                        <span class="n">y</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;ate&#39;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Cannot be None. That</span><span class="se">\&#39;</span><span class="s1">s just the default to have consistent method parameters.&#39;</span>
         <span class="k">assert</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ate&#39;</span><span class="p">,</span> <span class="s1">&#39;att&#39;</span><span class="p">,</span> <span class="s1">&#39;atc&#39;</span><span class="p">]</span>
         <span class="n">propensity_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ix_confounders</span><span class="p">])</span>
         <span class="n">ix_treat</span><span class="p">,</span> <span class="n">ix_control</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="bp">self</span><span class="o">.</span><span class="n">ix</span><span class="p">]</span> <span class="o">==</span> <span class="n">treatment</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="bp">self</span><span class="o">.</span><span class="n">ix</span><span class="p">]</span> <span class="o">==</span> <span class="n">control</span>
@@ -1185,12 +1192,12 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
             <span class="n">atc</span> <span class="o">=</span> <span class="n">get_atc</span><span class="p">()</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">att</span><span class="o">*</span><span class="n">n_treat</span> <span class="o">+</span> <span class="n">atc</span><span class="o">*</span><span class="n">n_cont</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_treat</span> <span class="o">+</span> <span class="n">n_cont</span><span class="p">)</span>
         
-        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;att&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;ate&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">get_ate</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;att&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">get_att</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;atc&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">get_atc</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;ate&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">get_ate</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 </pre></div>
@@ -1212,7 +1219,7 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">propensity_model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
 <span class="n">estimator</span> <span class="o">=</span> <span class="n">PropensityScoreMatcher</span><span class="p">(</span><span class="n">propensity_model</span><span class="p">)</span>
 <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ix</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ix_confounders</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">ate</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ate</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ate = </span><span class="si">{</span><span class="n">ate</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -1251,7 +1258,8 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outcome_is_binary</span> <span class="o">=</span> <span class="kc">False</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outcome_is_binary</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">treatment_is_binary</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">333</span>
 <span class="n">n_common_causes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_causes</span><span class="p">)</span>
@@ -1263,7 +1271,7 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
 <span class="n">cc</span> <span class="o">=</span> <span class="n">CommonCauses</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_common_causes</span><span class="p">)</span>
 <span class="n">ins</span> <span class="o">=</span> <span class="n">Instruments</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_instruments</span><span class="p">)</span>
 <span class="n">em</span> <span class="o">=</span> <span class="n">EffectModifiers</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_eff_mods</span><span class="p">)</span>
-<span class="n">treat</span> <span class="o">=</span> <span class="n">Treatments</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_treatments</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">ins</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+<span class="n">treat</span> <span class="o">=</span> <span class="n">Treatments</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_treatments</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">ins</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">treatment_is_binary</span><span class="o">=</span><span class="n">treatment_is_binary</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">Outcomes</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">treat</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">em</span><span class="p">,</span> <span class="n">outcome_is_binary</span><span class="o">=</span><span class="n">outcome_is_binary</span><span class="p">)</span>
 <span class="n">obs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">treat</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">em</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">obs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">not_target</span> <span class="o">=</span> <span class="n">get_Xy</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outcome</span><span class="p">)</span>
@@ -1283,7 +1291,7 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">obs</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -1296,76 +1304,20 @@ $\displaystyle \left( \left( 200, \  3\right), \  \left( 200\right)\right)$
 <div class="output_area">
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>V0</th>
-      <th>V1</th>
-      <th>W0</th>
-      <th>X0</th>
-      <th>Y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-2.062174</td>
-      <td>0.101653</td>
-      <td>0.436554</td>
-      <td>1.178004</td>
-      <td>-2.000886</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-0.427900</td>
-      <td>1.065733</td>
-      <td>0.469966</td>
-      <td>-2.688262</td>
-      <td>1.289903</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-0.129719</td>
-      <td>0.774790</td>
-      <td>0.020602</td>
-      <td>0.415508</td>
-      <td>0.629129</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.619531</td>
-      <td>0.667485</td>
-      <td>1.157490</td>
-      <td>-2.368033</td>
-      <td>1.028694</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>-1.534733</td>
-      <td>-0.980660</td>
-      <td>-0.784079</td>
-      <td>0.140463</td>
-      <td>-2.551118</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>(   V0        W0        X0  Y
+ 0   1  1.176682  0.468362  0
+ 1   0 -0.581795 -0.010592  1
+ 2   0  0.413044  0.275547  1
+ 3   0 -0.741007 -2.044762  1
+ 4   1 -0.167759 -2.053056  0,
+      V0        W0        X0  Y
+ 328   0  0.937082  0.408209  0
+ 329   0 -0.020501  0.657049  0
+ 330   1  1.063346 -0.548377  0
+ 331   1  1.241344 -0.537261  1
+ 332   0  0.667529  0.745335  0)</pre>
 </div>
 
 </div>
@@ -1418,7 +1370,7 @@ $\displaystyle 0$
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Changing the implementation of <a href="/bcg/causal_model#get_Xy"><code>get_Xy</code></a>, incorporating products with effect modifiers, based on lns 59-71 in <code>causal_estimators/linear_regression_estimator.py</code> with the new argument<code>feature_product_groups</code>. The variable is supposed to consist of two lists, each containing features in <code>obs</code>, of which all products will be computed.</p>
+<p>Changing the implementation of <a href="/bcg/basics#get_Xy"><code>get_Xy</code></a>, incorporating products with effect modifiers, based on lns 59-71 in <code>causal_estimators/linear_regression_estimator.py</code> with the new argument<code>feature_product_groups</code>. The variable is supposed to consist of two lists, each containing features in <code>obs</code>, of which all products will be computed.</p>
 
 </div>
 </div>
@@ -1441,8 +1393,9 @@ $\displaystyle 0$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_Xy" class="doc_header"><code>get_Xy</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L272" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_Xy</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
+<h4 id="get_Xy_with_products" class="doc_header"><code>get_Xy_with_products</code><a href="https://github.com/fastai/bcg/tree/master/bcg/causal_model.py#L278" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_Xy_with_products</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>feature_product_groups</code></strong>:<code>List</code>[<code>list</code>]=<em><code>None</code></em>)</p>
 </blockquote>
+<p>feaure_product_groups (e.g. [["V0", "V1", "W0"], ["X0", "X1"]]) to compute products between each var in the first and second list (not within each list)</p>
 
 </div>
 
@@ -1461,7 +1414,7 @@ $\displaystyle 0$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_Xy</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">feature_product_groups</span><span class="o">=</span><span class="p">[</span><span class="n">treatments</span><span class="p">,</span> <span class="n">effect_modifiers</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_Xy_with_products</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">feature_product_groups</span><span class="o">=</span><span class="p">[</span><span class="n">treatments</span><span class="p">,</span> <span class="n">effect_modifiers</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -1476,98 +1429,356 @@ $\displaystyle 0$
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(array([[-2.06217367,  0.10165321,  0.43655352, -2.42924804,  0.11974785],
-        [-0.42790025,  1.0657328 ,  0.46996561,  1.15030778, -2.86496848],
-        [-0.12971905,  0.77479028,  0.02060249, -0.05389931,  0.32193163],
-        ...,
-        [-0.70966697, -2.32796402,  2.20724734,  1.55402541,  5.09776475],
-        [-0.25905595,  0.65131404, -1.21140486, -0.27757741,  0.69788037],
-        [-2.00116322,  1.11825031, -0.59807879, -0.70160665,  0.3920579 ]]),
- array([-2.00088554e+00,  1.28990295e+00,  6.29129211e-01,  1.02869396e+00,
-        -2.55111836e+00, -3.51175561e+00,  1.20114004e+00,  3.42398321e+00,
-        -2.03925649e-01, -3.17895805e-01, -4.86210253e-01,  2.67238977e+00,
-        -1.98586261e+00, -1.47312630e-01, -2.35017626e+00,  1.57634593e+00,
-        -7.98529682e-03,  2.03960993e+00, -2.97333989e-02,  1.99258422e+00,
-        -1.95795397e+00, -3.15112426e+00,  2.08422323e-01, -2.56672731e+00,
-         1.90783941e-01, -1.54400188e+00,  3.54015014e-01, -1.84158445e+00,
-         6.91561079e-01,  1.03701002e+00, -1.83589506e+00, -2.80848520e+00,
-        -4.05577945e-02, -1.61465708e-01, -2.03255784e+00, -2.67296622e-01,
-        -1.09234139e+00,  9.85344137e-01,  2.27331854e+00, -1.36440677e-05,
-         1.50062976e+00, -2.50677179e+00, -1.65496159e-01,  1.90127938e+00,
-        -4.11625549e-01, -1.16997825e+00, -2.43060065e+00, -6.84318537e-01,
-        -1.28929475e+00,  9.36915180e-01, -9.94345372e-01, -3.05584173e-02,
-        -1.13724121e-01,  1.49853777e+00,  3.25178688e-01, -1.60816804e+00,
-        -2.41208221e-01, -3.04949638e+00, -1.92796954e+00, -2.74790556e+00,
-        -1.40109805e+00,  7.21172948e-01, -1.11893207e+00,  2.25396006e+00,
-        -1.71735413e+00, -6.80704531e-02,  5.78367472e-01, -1.33017454e+00,
-         1.46139345e+00,  4.50276075e-01,  5.15020168e-01, -6.24599298e-01,
-         2.40227071e+00,  1.57840911e+00, -2.05212573e+00,  4.77346231e-01,
-        -9.96585703e-01, -3.38758867e-01,  5.40041886e-01,  1.04126740e+00,
-         2.97904266e+00, -1.21241554e+00, -1.42016589e-01,  1.99485047e-01,
-         2.37757213e+00,  2.66380923e-01, -9.99647364e-01, -9.81580533e-01,
-         2.50817011e+00, -3.90518590e-01, -1.61490911e-01,  2.80338769e-01,
-        -9.74251882e-01,  7.29588444e-01, -2.21691704e+00,  5.00268653e-01,
-         9.57481473e-01, -1.82121093e+00, -6.80288534e-01, -1.00565718e-01,
-        -1.13919341e+00,  2.90608063e+00,  9.09666620e-01, -3.80459898e-01,
-        -3.75141727e+00,  5.94499217e-01,  1.57481257e+00, -3.54332134e-01,
-        -1.16629688e+00,  9.28148791e-02, -5.15576833e-01, -4.21151253e-01,
-        -1.59990733e+00, -1.62610919e-01, -7.98082058e-01, -2.22231256e+00,
-        -7.98531081e-01, -2.27683435e+00,  2.63554395e+00,  2.79790030e-01,
-        -1.01691795e+00,  2.84043167e+00,  5.04641015e-01,  1.87248497e+00,
-        -3.48560993e+00,  1.14725802e+00,  1.70058117e+00, -5.90448858e-01,
-        -1.25108848e+00,  2.02044429e+00, -4.55973239e-02,  1.39744218e+00,
-         4.99275220e-01, -1.02931515e+00,  1.32842286e+00,  1.87790675e+00,
-        -1.62234746e-01,  3.96144700e-01, -1.75371849e+00, -2.18599790e+00,
-        -6.63867456e-01, -3.93152341e-01,  2.17090760e+00,  3.75826825e+00,
-         4.13718577e-01,  8.81647288e-01,  8.56134019e-01, -2.05779660e+00,
-         2.02746096e-01,  3.28988473e-01, -1.08672632e+00,  4.72506945e-01,
-         3.40321878e-01,  5.41485401e-01, -1.70069496e+00,  5.33855014e-01,
-        -1.59919751e+00,  8.98526108e-01,  2.31493259e-01, -1.65417833e+00,
-         8.28136231e-01,  6.83153892e-01,  2.15579263e+00,  8.95843120e-01,
-        -1.30166776e+00,  8.44650465e-02, -4.44015249e-01, -6.70209858e-02,
-        -6.60286824e-02, -1.35061891e+00,  2.12277412e+00, -8.45288266e-01,
-        -1.57720042e+00,  1.38653433e+00,  1.34143413e+00, -1.97233041e+00,
-         2.83282372e-01, -6.52914440e-01, -1.45873652e-01, -1.32286098e+00,
-        -1.13978693e+00,  1.58731948e+00,  2.40904638e+00, -3.06271168e+00,
-        -2.97197748e+00, -1.59891133e+00, -2.21172409e+00, -9.10388109e-02,
-        -9.92485425e-01, -6.40967278e-01, -1.84749788e-01,  1.97646838e+00,
-         9.07217063e-01,  1.33072311e+00,  1.97060011e+00, -1.07771070e+00,
-         1.09468449e+00,  1.07970190e+00,  8.03442634e-01, -1.37502676e+00,
-        -2.08289550e+00, -1.59928878e+00, -2.15598635e-01, -1.25604754e+00,
-        -3.01793448e-01, -1.95973313e-01,  9.90643413e-01, -5.05251544e-01,
-         5.14270990e-01,  3.85171614e-01,  5.74144772e-01, -1.13989895e+00,
-        -1.15284950e+00, -1.85400401e+00, -2.67739725e+00, -3.35811169e+00,
-         1.67727889e+00, -1.56015838e+00, -8.85771878e-01, -5.89676257e-02,
-         1.99178271e+00, -1.65586690e+00, -1.35075967e+00, -1.65388351e+00,
-         1.26813487e+00, -5.70342180e-01,  8.36805113e-01, -2.79620181e+00,
-        -3.83352446e+00,  1.35702144e+00,  3.59460398e-01,  8.78095031e-01,
-         3.82179974e+00,  3.19785698e+00, -2.39328057e+00,  1.25555540e+00,
-         7.66590088e-01, -3.13330279e+00, -4.32584903e+00,  2.50369735e+00,
-        -6.95347796e-01,  1.94077933e+00,  7.67386842e-01, -2.58555741e+00,
-         1.11675682e+00, -4.36048120e-01, -2.62123348e+00,  1.91786757e+00,
-         3.18917447e+00, -8.74175940e-01, -1.22220883e+00,  1.76393828e+00,
-        -4.25173114e-01,  1.36425662e-01,  1.51994375e+00,  1.35713123e+00,
-        -1.67362347e+00,  2.81090397e+00,  1.78300603e-01,  1.54730366e+00,
-         1.85846441e-01, -9.80120415e-01,  2.82494045e-01, -6.58598462e-01,
-        -7.48098271e-02, -1.95833019e-01,  6.26630814e-01,  1.35426687e+00,
-         8.02359200e-01,  2.02559290e-01, -7.20967548e-01, -2.10852441e+00,
-         1.24175769e+00,  1.22344558e+00, -1.20736804e+00, -2.02595694e+00,
-         1.19407361e+00,  2.74697832e-02,  9.60332004e-01,  3.39122686e+00,
-         1.31280163e+00, -6.59542100e-01, -7.10752174e-01, -1.74481248e+00,
-        -3.43067430e-01, -2.15100407e+00, -2.15751052e-01,  3.14183759e+00,
-         3.80593885e-02, -2.54974899e-01, -2.95939816e-01, -1.39589191e+00,
-         1.28297713e+00, -4.80893160e-02, -1.49749400e+00,  1.92068673e+00,
-         4.21268325e+00,  4.55789476e-01, -4.73041555e+00, -2.30373026e-01,
-         2.86018822e+00,  1.54096780e+00, -6.51412333e-01, -8.24654197e-01,
-         5.69308785e-01,  6.85727524e-01,  5.03523660e-01, -3.51481406e+00,
-         1.24842806e-01, -9.09281165e-01, -6.74739443e-01,  1.19715965e+00,
-         6.77460835e-01, -4.83042698e-01,  5.02098915e-01,  1.82037304e+00,
-        -4.08131476e+00, -7.84086585e-01,  2.46764669e+00, -1.63151257e-01,
-         1.11451655e+00, -4.65918041e-01, -2.33229809e-02, -2.65765786e+00,
-         1.09996717e+00,  9.96437486e-01,  5.84960668e-01,  4.88322181e-01,
-        -8.05496680e-01, -3.75314206e+00, -4.34632827e+00,  1.00485440e-01,
-        -1.35114930e+00]),
- [&#39;V0&#39;, &#39;V1&#39;, &#39;W0&#39;, &#39;V0_X0&#39;, &#39;V1_X0&#39;])</pre>
+<pre>(array([[ 1.        ,  1.17668216,  0.46836244],
+        [ 0.        , -0.58179495, -0.        ],
+        [ 0.        ,  0.41304439,  0.        ],
+        [ 0.        , -0.7410068 , -0.        ],
+        [ 1.        , -0.1677586 , -2.05305636],
+        [ 0.        ,  0.01860169,  0.        ],
+        [ 0.        ,  0.43848953,  0.        ],
+        [ 1.        , -0.87806002, -0.03161624],
+        [ 0.        ,  0.69264442,  0.        ],
+        [ 0.        , -0.19594743, -0.        ],
+        [ 1.        ,  1.00767243,  0.62229535],
+        [ 0.        ,  2.50225413, -0.        ],
+        [ 1.        , -1.5025282 , -1.04862138],
+        [ 0.        ,  0.59197037, -0.        ],
+        [ 0.        ,  0.81509076, -0.        ],
+        [ 1.        ,  0.82414504,  0.60770411],
+        [ 0.        ,  0.47207575, -0.        ],
+        [ 1.        ,  0.22302966, -1.34418616],
+        [ 0.        ,  0.84251715, -0.        ],
+        [ 1.        , -0.88151327,  0.24835875],
+        [ 1.        , -0.30735475, -0.04794243],
+        [ 0.        , -0.58668586,  0.        ],
+        [ 1.        ,  0.27842421, -1.26786009],
+        [ 1.        , -1.38543832, -0.21981882],
+        [ 0.        ,  0.04636712,  0.        ],
+        [ 1.        , -0.27225662, -1.49817642],
+        [ 0.        ,  0.69317737, -0.        ],
+        [ 0.        ,  0.55967209,  0.        ],
+        [ 0.        , -0.28012082,  0.        ],
+        [ 0.        ,  0.83954801, -0.        ],
+        [ 1.        ,  1.17486959, -0.19711913],
+        [ 0.        , -0.42327682, -0.        ],
+        [ 1.        ,  1.19543944, -0.63228272],
+        [ 1.        , -0.5933412 , -1.49673812],
+        [ 0.        , -0.33224539,  0.        ],
+        [ 1.        , -0.48398116, -0.14450943],
+        [ 1.        ,  0.35354921,  0.03223502],
+        [ 0.        ,  0.78950319,  0.        ],
+        [ 1.        ,  0.27726173, -0.90122988],
+        [ 0.        , -1.02464195,  0.        ],
+        [ 1.        , -0.11925939,  0.1559452 ],
+        [ 1.        ,  2.6178189 , -0.05506116],
+        [ 0.        ,  1.0751829 , -0.        ],
+        [ 1.        ,  1.74349409, -1.47659248],
+        [ 0.        , -0.11530499,  0.        ],
+        [ 1.        ,  1.15353089, -2.97294368],
+        [ 1.        , -0.20033576, -1.74212625],
+        [ 0.        , -1.38846114,  0.        ],
+        [ 1.        , -0.36144888,  0.67152466],
+        [ 1.        ,  0.66968925,  0.61413237],
+        [ 0.        ,  0.16281224, -0.        ],
+        [ 0.        ,  0.21976562, -0.        ],
+        [ 1.        ,  1.53845996,  0.54539873],
+        [ 0.        , -0.91126766, -0.        ],
+        [ 1.        , -0.68694697, -0.67405784],
+        [ 1.        , -1.18724641,  0.96144145],
+        [ 1.        ,  0.10311262,  0.75524058],
+        [ 0.        ,  0.29532879, -0.        ],
+        [ 0.        ,  0.540325  ,  0.        ],
+        [ 0.        , -2.04097777, -0.        ],
+        [ 0.        ,  1.82561622, -0.        ],
+        [ 0.        ,  0.09735642,  0.        ],
+        [ 0.        , -0.6646908 , -0.        ],
+        [ 1.        ,  1.12239077,  0.09404086],
+        [ 1.        , -0.12017347,  0.35420544],
+        [ 1.        , -0.65994112, -0.62236337],
+        [ 0.        ,  1.27624662, -0.        ],
+        [ 1.        , -1.51983953, -0.37870379],
+        [ 1.        , -0.40253108,  1.22736594],
+        [ 0.        ,  1.97445598,  0.        ],
+        [ 0.        ,  0.19682415, -0.        ],
+        [ 0.        ,  0.2096079 , -0.        ],
+        [ 1.        , -0.82997588, -0.30663071],
+        [ 0.        , -1.28976469, -0.        ],
+        [ 1.        ,  1.42382724, -0.40233017],
+        [ 1.        , -1.14401892,  0.55393806],
+        [ 0.        , -0.93563609, -0.        ],
+        [ 1.        , -0.66266796,  0.01546187],
+        [ 1.        , -2.18297248,  0.8571488 ],
+        [ 1.        ,  0.61298124,  0.3419954 ],
+        [ 0.        ,  0.69951473, -0.        ],
+        [ 1.        , -0.49642078, -0.61186666],
+        [ 1.        ,  0.58792823, -0.72918475],
+        [ 1.        ,  0.33747147, -0.68207888],
+        [ 0.        ,  0.7830838 , -0.        ],
+        [ 1.        , -0.19651434,  0.41325202],
+        [ 0.        , -0.82630505, -0.        ],
+        [ 0.        , -1.08308539, -0.        ],
+        [ 1.        ,  1.51949011, -0.5132064 ],
+        [ 0.        , -0.55609254, -0.        ],
+        [ 0.        , -0.55020446, -0.        ],
+        [ 1.        , -0.23046882, -1.18978961],
+        [ 1.        , -0.83335204, -0.51365536],
+        [ 0.        , -0.75398382, -0.        ],
+        [ 0.        ,  1.0331082 , -0.        ],
+        [ 0.        , -1.90836353, -0.        ],
+        [ 1.        , -0.24204649, -1.16788193],
+        [ 0.        , -0.48366006, -0.        ],
+        [ 1.        ,  1.9609003 , -0.10092163],
+        [ 1.        , -0.10930367,  0.19715841],
+        [ 1.        , -0.91681464, -1.6097447 ],
+        [ 0.        , -1.96662707, -0.        ],
+        [ 0.        ,  1.56986699,  0.        ],
+        [ 1.        , -0.01387704,  0.65497536],
+        [ 0.        , -0.68650505, -0.        ],
+        [ 0.        ,  0.21987463, -0.        ],
+        [ 0.        , -1.30508432, -0.        ],
+        [ 1.        ,  1.61626745, -1.02732012],
+        [ 1.        , -0.31633112, -1.61368864],
+        [ 1.        , -0.83786904,  1.04923957],
+        [ 0.        ,  2.02425014, -0.        ],
+        [ 0.        , -1.18013087,  0.        ],
+        [ 1.        , -0.53768099,  0.35227688],
+        [ 0.        , -0.73424031,  0.        ],
+        [ 1.        ,  0.87101132,  0.22893354],
+        [ 0.        ,  0.37984918, -0.        ],
+        [ 0.        ,  0.66534242, -0.        ],
+        [ 1.        , -1.64420658, -1.95857656],
+        [ 1.        ,  0.1383424 , -1.55802608],
+        [ 0.        , -0.74683721, -0.        ],
+        [ 1.        , -0.43560403,  1.94214118],
+        [ 1.        , -1.06956346, -0.5789204 ],
+        [ 1.        ,  1.99088147, -0.14986403],
+        [ 0.        , -0.12728962, -0.        ],
+        [ 0.        ,  1.99533371, -0.        ],
+        [ 1.        ,  0.1353928 , -1.37197832],
+        [ 0.        ,  1.37546801,  0.        ],
+        [ 0.        , -1.08458817,  0.        ],
+        [ 0.        ,  0.25768835,  0.        ],
+        [ 1.        , -1.97007802, -0.17201895],
+        [ 0.        ,  0.88053984,  0.        ],
+        [ 1.        ,  0.96000679, -0.33383015],
+        [ 0.        , -0.02423215,  0.        ],
+        [ 0.        ,  1.62918072, -0.        ],
+        [ 0.        , -0.35953656, -0.        ],
+        [ 1.        , -3.33968888, -0.1151471 ],
+        [ 1.        , -1.22286802, -1.08098558],
+        [ 1.        , -0.27731606, -1.75435442],
+        [ 1.        , -0.14299429, -1.4113362 ],
+        [ 0.        , -0.79238418,  0.        ],
+        [ 0.        ,  0.15492188, -0.        ],
+        [ 1.        ,  0.24196779, -1.23409943],
+        [ 1.        ,  0.50064661, -0.11293217],
+        [ 1.        , -0.37903674, -1.85947872],
+        [ 0.        , -2.12054598, -0.        ],
+        [ 0.        , -2.69900803, -0.        ],
+        [ 1.        , -1.04118005, -0.87282059],
+        [ 1.        , -1.26530384,  0.03916189],
+        [ 1.        , -0.08328762, -0.93456518],
+        [ 1.        , -0.57943718,  0.64581655],
+        [ 1.        ,  0.45377051, -1.2342177 ],
+        [ 1.        ,  0.77285238,  0.21019265],
+        [ 1.        ,  1.99209498, -1.75214351],
+        [ 0.        , -1.5709821 , -0.        ],
+        [ 1.        ,  0.57874377, -0.49886028],
+        [ 1.        ,  0.52104172, -1.6131055 ],
+        [ 0.        , -1.29674892, -0.        ],
+        [ 1.        ,  0.25799875, -0.28173773],
+        [ 1.        ,  0.09164494, -0.93814027],
+        [ 0.        , -0.19604978,  0.        ],
+        [ 1.        ,  2.40007948,  0.13682563],
+        [ 0.        , -0.31576543, -0.        ],
+        [ 1.        ,  1.27486599,  1.58551915],
+        [ 0.        , -0.0988648 , -0.        ],
+        [ 0.        ,  0.57158242, -0.        ],
+        [ 0.        , -0.46094401,  0.        ],
+        [ 0.        ,  0.2513693 ,  0.        ],
+        [ 0.        , -1.19324532, -0.        ],
+        [ 0.        ,  0.16327776, -0.        ],
+        [ 0.        , -0.55345049, -0.        ],
+        [ 0.        ,  0.88697158,  0.        ],
+        [ 1.        ,  0.31997452, -1.81553901],
+        [ 1.        ,  1.20021945, -1.44244412],
+        [ 1.        ,  1.47430806, -0.29657584],
+        [ 1.        ,  2.2577756 , -0.47501888],
+        [ 0.        , -1.95906451, -0.        ],
+        [ 1.        , -0.33739542,  1.47269935],
+        [ 1.        ,  0.11656465,  0.54634721],
+        [ 1.        ,  0.56925007,  2.19265007],
+        [ 0.        , -0.84636977,  0.        ],
+        [ 1.        , -0.20755873,  0.52894867],
+        [ 1.        ,  0.86748963,  0.25236621],
+        [ 1.        ,  0.77730636,  0.88968126],
+        [ 0.        ,  0.83362934, -0.        ],
+        [ 0.        ,  1.2010197 , -0.        ],
+        [ 0.        , -1.78993312,  0.        ],
+        [ 0.        , -0.88537341, -0.        ],
+        [ 1.        ,  0.6281433 ,  0.52400025],
+        [ 1.        ,  0.1306515 , -1.51775631],
+        [ 0.        , -1.11019716, -0.        ],
+        [ 1.        , -0.1040678 ,  0.81633243],
+        [ 0.        , -2.2783055 ,  0.        ],
+        [ 0.        ,  0.32917672, -0.        ],
+        [ 0.        ,  0.30402605, -0.        ],
+        [ 1.        ,  0.65239543, -0.03703682],
+        [ 0.        , -0.70969102, -0.        ],
+        [ 1.        ,  0.76836166,  1.09724708],
+        [ 0.        , -0.95307736, -0.        ],
+        [ 1.        , -0.60126687, -0.68932624],
+        [ 1.        ,  0.2611847 , -0.51854676],
+        [ 1.        ,  0.86086798, -0.99311398],
+        [ 0.        , -0.60212345, -0.        ],
+        [ 0.        , -0.21489864, -0.        ],
+        [ 1.        ,  0.16784098, -0.96451859],
+        [ 1.        ,  0.99933976, -0.92318495],
+        [ 1.        , -0.77836613, -0.27311638],
+        [ 1.        , -0.58136406,  1.129748  ],
+        [ 0.        , -0.99482575, -0.        ],
+        [ 0.        , -2.26833038,  0.        ],
+        [ 0.        , -0.49140647,  0.        ],
+        [ 0.        ,  0.3417349 ,  0.        ],
+        [ 0.        ,  0.81352755,  0.        ],
+        [ 1.        ,  1.04808466, -1.95391987],
+        [ 0.        ,  0.03739659, -0.        ],
+        [ 1.        ,  1.90839777, -0.97396579],
+        [ 1.        ,  0.35613674, -1.19637825],
+        [ 1.        , -1.54520658, -0.47753458],
+        [ 1.        ,  0.38647342,  0.31642644],
+        [ 1.        , -0.26497912,  1.07614905],
+        [ 0.        , -1.18843513, -0.        ],
+        [ 0.        , -0.18649098, -0.        ],
+        [ 1.        , -0.95641689, -0.53847434],
+        [ 0.        , -0.62785403, -0.        ],
+        [ 0.        ,  0.54499987,  0.        ],
+        [ 1.        , -0.3661312 , -1.00765035],
+        [ 0.        , -1.84270122, -0.        ],
+        [ 1.        , -1.33943218, -0.6999864 ],
+        [ 1.        , -0.1482295 , -0.50383975],
+        [ 1.        , -0.30679679, -1.6769    ],
+        [ 0.        ,  0.6370456 , -0.        ],
+        [ 1.        ,  1.31814802, -0.06917642],
+        [ 1.        ,  1.94500489,  0.707354  ],
+        [ 0.        , -1.82858479, -0.        ],
+        [ 0.        ,  1.91970659, -0.        ],
+        [ 0.        ,  0.19284009,  0.        ],
+        [ 1.        ,  0.60358981, -1.69540105],
+        [ 0.        , -0.65389405,  0.        ],
+        [ 0.        , -0.99792959,  0.        ],
+        [ 0.        , -0.61591353,  0.        ],
+        [ 0.        ,  0.9736039 ,  0.        ],
+        [ 0.        , -2.2061269 , -0.        ],
+        [ 0.        , -1.18717205, -0.        ],
+        [ 0.        , -2.96283253,  0.        ],
+        [ 0.        , -0.16640058,  0.        ],
+        [ 1.        , -0.80142357,  0.80451183],
+        [ 0.        ,  0.7034448 ,  0.        ],
+        [ 1.        , -0.65441058, -1.11367468],
+        [ 0.        ,  1.9866488 ,  0.        ],
+        [ 0.        , -0.12074271,  0.        ],
+        [ 0.        ,  0.85874995,  0.        ],
+        [ 0.        , -0.23471034, -0.        ],
+        [ 1.        , -0.69421745, -0.37865228],
+        [ 0.        , -1.29753069, -0.        ],
+        [ 1.        , -0.12132465, -2.64655954],
+        [ 0.        ,  0.5908582 , -0.        ],
+        [ 0.        , -0.13259458, -0.        ],
+        [ 1.        ,  0.12074633, -2.19508328],
+        [ 0.        ,  0.98194261, -0.        ],
+        [ 0.        ,  0.76501008,  0.        ],
+        [ 0.        ,  0.47128088,  0.        ],
+        [ 0.        , -1.47328253, -0.        ],
+        [ 1.        , -1.91590797, -0.96676211],
+        [ 0.        , -0.46992243, -0.        ],
+        [ 1.        , -0.54882431,  0.21779183],
+        [ 1.        , -0.58274857, -2.89552988],
+        [ 1.        ,  0.50685665, -1.53525251],
+        [ 0.        , -0.80810694, -0.        ],
+        [ 1.        , -0.22109691, -0.85674545],
+        [ 0.        ,  0.57368129,  0.        ],
+        [ 0.        , -0.86655538,  0.        ],
+        [ 0.        ,  1.28184488,  0.        ],
+        [ 0.        , -0.40320565,  0.        ],
+        [ 0.        ,  0.12229881,  0.        ],
+        [ 0.        ,  0.53200215, -0.        ],
+        [ 0.        , -1.39066443, -0.        ],
+        [ 0.        , -0.08015956, -0.        ],
+        [ 1.        , -0.18230888, -0.2610354 ],
+        [ 0.        ,  0.13218753, -0.        ],
+        [ 1.        , -0.48240024,  0.28261661],
+        [ 0.        ,  0.58114232, -0.        ],
+        [ 1.        ,  0.24950259,  0.34883739],
+        [ 0.        ,  0.23214457,  0.        ],
+        [ 1.        ,  0.4265521 , -0.8793497 ],
+        [ 1.        , -0.09835993, -0.23177168],
+        [ 1.        ,  0.31605596, -0.27188055],
+        [ 0.        ,  0.49403607, -0.        ],
+        [ 1.        ,  0.03023592, -0.56611124],
+        [ 0.        , -2.16333854,  0.        ],
+        [ 1.        , -0.56309567,  1.3852228 ],
+        [ 1.        , -0.11057424, -0.7816743 ],
+        [ 0.        ,  0.92326045,  0.        ],
+        [ 1.        , -1.57325458, -2.17917003],
+        [ 0.        ,  0.51388745, -0.        ],
+        [ 1.        , -1.33023702, -0.98718309],
+        [ 1.        , -0.00646919, -1.45698329],
+        [ 1.        , -0.68117076,  0.11792957],
+        [ 0.        , -0.50013649, -0.        ],
+        [ 1.        , -2.29327951, -1.69190102],
+        [ 0.        , -0.10177061, -0.        ],
+        [ 1.        ,  0.33030482, -0.99170174],
+        [ 1.        , -1.20297097, -0.40180826],
+        [ 0.        , -0.42249472, -0.        ],
+        [ 1.        ,  0.74796245, -0.40187473],
+        [ 0.        ,  0.29643631,  0.        ],
+        [ 1.        , -0.9387942 ,  0.0142777 ],
+        [ 0.        , -1.39634321,  0.        ],
+        [ 1.        ,  0.74506433, -1.77284876],
+        [ 1.        , -0.22198416,  1.61809186],
+        [ 0.        , -0.60407254, -0.        ],
+        [ 1.        , -0.43769244, -0.98667038],
+        [ 1.        , -0.65880241, -0.65922251],
+        [ 1.        ,  1.19145053, -1.51247836],
+        [ 1.        , -2.42059679, -0.83186204],
+        [ 1.        , -0.89557387, -0.096262  ],
+        [ 0.        , -0.17293205,  0.        ],
+        [ 0.        , -0.32774982,  0.        ],
+        [ 0.        , -0.28746924,  0.        ],
+        [ 1.        , -0.67139085,  1.60276736],
+        [ 0.        ,  0.0357559 , -0.        ],
+        [ 0.        ,  0.07941142,  0.        ],
+        [ 0.        ,  0.24710014, -0.        ],
+        [ 1.        , -0.79006552, -0.27965665],
+        [ 0.        ,  0.21546596, -0.        ],
+        [ 0.        , -1.11276003, -0.        ],
+        [ 1.        ,  0.20444365, -1.07183991],
+        [ 1.        , -0.15059638, -2.32557143],
+        [ 0.        ,  0.45714317, -0.        ],
+        [ 0.        ,  1.27504927, -0.        ],
+        [ 0.        ,  0.93708227,  0.        ],
+        [ 0.        , -0.02050105,  0.        ],
+        [ 1.        ,  1.06334631, -0.54837674],
+        [ 1.        ,  1.24134447, -0.53726089],
+        [ 0.        ,  0.66752857,  0.        ]]),
+ array([0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1,
+        1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1,
+        1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1,
+        0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0,
+        1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1,
+        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1,
+        1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0,
+        1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0,
+        1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1,
+        0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1,
+        0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1,
+        1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1,
+        1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1,
+        1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0,
+        0, 1, 0]),
+ [&#39;V0&#39;, &#39;W0&#39;, &#39;V0_X0&#39;])</pre>
 </div>
 
 </div>
@@ -1596,7 +1807,7 @@ $\displaystyle 0$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="estimate_effect" class="doc_header"><code>estimate_effect</code><a href="https://github.com/fastai/bcg/tree/master/bcg/causal_model.py#L299" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>estimate_effect</code>(<strong><code>estimands</code></strong>:<code>dict</code>, <strong><code>control_value</code></strong>:<code>float</code>, <strong><code>treatment_name</code></strong>:<code>str</code>, <strong><code>treatment_value</code></strong>:<code>float</code>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>outcome</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>causal_method</code></strong>:<code>str</code>=<em><code>'backdoor'</code></em>, <strong><code>model</code></strong>:<code>RegressorMixin</code>=<em><code>None</code></em>, <strong><code>target_unit</code></strong>:<code>str</code>=<em><code>'ate'</code></em>, <strong><code>effect_modifiers</code></strong>:<code>List</code>[<code>str</code>]=<em><code>None</code></em>)</p>
+<h4 id="estimate_effect" class="doc_header"><code>estimate_effect</code><a href="https://github.com/fastai/bcg/tree/master/bcg/causal_model.py#L300" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>estimate_effect</code>(<strong><code>estimands</code></strong>:<code>dict</code>, <strong><code>control_value</code></strong>:<code>float</code>, <strong><code>treatment_name</code></strong>:<code>str</code>, <strong><code>treatment_value</code></strong>:<code>float</code>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>outcome</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>causal_method</code></strong>:<code>str</code>=<em><code>'backdoor'</code></em>, <strong><code>model</code></strong>:<code>Union</code>[<code>RegressorMixin</code>, <code>ClassifierMixin</code>]=<em><code>None</code></em>, <strong><code>target_unit</code></strong>:<code>str</code>=<em><code>'ate'</code></em>, <strong><code>effect_modifiers</code></strong>:<code>List</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>supervised_type_is_regression</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1624,11 +1835,15 @@ $\displaystyle 0$
 <span class="n">effect_modifiers</span> <span class="o">=</span> <span class="n">effect_modifiers</span>
 <span class="n">target_unit</span> <span class="o">=</span> <span class="s1">&#39;ate&#39;</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+<span class="c1"># model = linear_model.LinearRegression()</span>
+<span class="c1"># model = linear_model.LogisticRegression()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">supervised_type_is_regression</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">cm</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">estimands</span><span class="p">,</span> <span class="n">control_value</span><span class="p">,</span> <span class="n">treatment_name</span><span class="p">,</span> <span class="n">treatment_value</span><span class="p">,</span>
                    <span class="n">obs</span><span class="p">,</span> <span class="n">outcome</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">causal_method</span><span class="o">=</span><span class="n">causal_method</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-                   <span class="n">target_unit</span><span class="o">=</span><span class="n">target_unit</span><span class="p">,</span> <span class="n">effect_modifiers</span><span class="o">=</span><span class="n">effect_modifiers</span><span class="p">)</span>
+                   <span class="n">target_unit</span><span class="o">=</span><span class="n">target_unit</span><span class="p">,</span> <span class="n">effect_modifiers</span><span class="o">=</span><span class="n">effect_modifiers</span><span class="p">,</span> 
+                   <span class="n">supervised_type_is_regression</span><span class="o">=</span><span class="n">supervised_type_is_regression</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1641,19 +1856,67 @@ $\displaystyle 0$
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>confounders [&#39;V0&#39;, &#39;V1&#39;, &#39;U&#39;, &#39;W0&#39;, &#39;X0&#39;]
+<pre>model None
+confounders [&#39;V0&#39;, &#39;U&#39;, &#39;W0&#39;, &#39;X0&#39;]
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-223-9adab0ab06b8&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span>                    obs<span class="ansi-blue-fg">,</span> outcome<span class="ansi-blue-fg">=</span>outcome<span class="ansi-blue-fg">,</span> causal_method<span class="ansi-blue-fg">=</span>causal_method<span class="ansi-blue-fg">,</span> model<span class="ansi-blue-fg">=</span>model<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">     16</span>                    target_unit<span class="ansi-blue-fg">=</span>target_unit<span class="ansi-blue-fg">,</span> effect_modifiers<span class="ansi-blue-fg">=</span>effect_modifiers<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">---&gt; 17</span><span class="ansi-red-fg">                    supervised_type_is_regression=supervised_type_is_regression)
+</span>
+<span class="ansi-green-fg">&lt;ipython-input-222-7ad792b78eaa&gt;</span> in <span class="ansi-cyan-fg">estimate_effect</span><span class="ansi-blue-fg">(self, estimands, control_value, treatment_name, treatment_value, obs, outcome, causal_method, model, target_unit, effect_modifiers, supervised_type_is_regression)</span>
+<span class="ansi-green-intense-fg ansi-bold">     33</span>     ix_confounders <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>_i <span class="ansi-green-fg">for</span> _i<span class="ansi-blue-fg">,</span>_v <span class="ansi-green-fg">in</span> enumerate<span class="ansi-blue-fg">(</span>obs<span class="ansi-blue-fg">.</span>columns<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">if</span> _v <span class="ansi-green-fg">in</span> confounders<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">     34</span>     estimator<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">,</span> ix<span class="ansi-blue-fg">,</span> ix_confounders<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 35</span><span class="ansi-red-fg">     </span>effect <span class="ansi-blue-fg">=</span> estimator<span class="ansi-blue-fg">.</span>estimate_effect<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">=</span>X<span class="ansi-blue-fg">,</span> treatment<span class="ansi-blue-fg">=</span>treatment_value<span class="ansi-blue-fg">,</span> control<span class="ansi-blue-fg">=</span>control_value<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">=</span>y<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     36</span>     <span class="ansi-green-fg">return</span> effect
+<span class="ansi-green-intense-fg ansi-bold">     37</span> 
 
+<span class="ansi-green-fg">&lt;ipython-input-151-0802d1b99830&gt;</span> in <span class="ansi-cyan-fg">estimate_effect</span><span class="ansi-blue-fg">(self, X, treatment, control, y, kind)</span>
+<span class="ansi-green-intense-fg ansi-bold">     64</span> 
+<span class="ansi-green-intense-fg ansi-bold">     65</span>         <span class="ansi-green-fg">if</span> kind <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;ate&#39;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 66</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> get_ate<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     67</span>         <span class="ansi-green-fg">elif</span> kind <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;att&#39;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     68</span>             <span class="ansi-green-fg">return</span> get_att<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle 1.8283018293864426$
+<span class="ansi-green-fg">&lt;ipython-input-151-0802d1b99830&gt;</span> in <span class="ansi-cyan-fg">get_ate</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     59</span>             n_treat <span class="ansi-blue-fg">=</span> ix_treat<span class="ansi-blue-fg">.</span>sum<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     60</span>             n_cont <span class="ansi-blue-fg">=</span> ix_control<span class="ansi-blue-fg">.</span>sum<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 61</span><span class="ansi-red-fg">             </span>att <span class="ansi-blue-fg">=</span> get_att<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     62</span>             atc <span class="ansi-blue-fg">=</span> get_atc<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     63</span>             <span class="ansi-green-fg">return</span> <span class="ansi-blue-fg">(</span>att<span class="ansi-blue-fg">*</span>n_treat <span class="ansi-blue-fg">+</span> atc<span class="ansi-blue-fg">*</span>n_cont<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">/</span> <span class="ansi-blue-fg">(</span>n_treat <span class="ansi-blue-fg">+</span> n_cont<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-151-0802d1b99830&gt;</span> in <span class="ansi-cyan-fg">get_att</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     34</span>         <span class="ansi-green-fg">def</span> get_att<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     35</span>             searcher<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>propensity_score<span class="ansi-blue-fg">[</span>ix_control<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 36</span><span class="ansi-red-fg">             </span>distances<span class="ansi-blue-fg">,</span> indices <span class="ansi-blue-fg">=</span> searcher<span class="ansi-blue-fg">.</span>kneighbors<span class="ansi-blue-fg">(</span>propensity_score<span class="ansi-blue-fg">[</span>ix_treat<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     37</span> 
+<span class="ansi-green-intense-fg ansi-bold">     38</span>             att <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span>
+
+<span class="ansi-green-fg">/mnt/c/Programs_wsl/anaconda3/envs/py37_dowhy/lib/python3.7/site-packages/sklearn/neighbors/base.py</span> in <span class="ansi-cyan-fg">kneighbors</span><span class="ansi-blue-fg">(self, X, n_neighbors, return_distance)</span>
+<span class="ansi-green-intense-fg ansi-bold">    400</span>         <span class="ansi-green-fg">if</span> X <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    401</span>             query_is_train <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
+<span class="ansi-green-fg">--&gt; 402</span><span class="ansi-red-fg">             </span>X <span class="ansi-blue-fg">=</span> check_array<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">,</span> accept_sparse<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;csr&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    403</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    404</span>             query_is_train <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span>
+
+<span class="ansi-green-fg">/mnt/c/Programs_wsl/anaconda3/envs/py37_dowhy/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ansi-cyan-fg">check_array</span><span class="ansi-blue-fg">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, warn_on_dtype, estimator)</span>
+<span class="ansi-green-intense-fg ansi-bold">    548</span>                              <span class="ansi-blue-fg">&#34; minimum of %d is required%s.&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    549</span>                              % (n_samples, array.shape, ensure_min_samples,
+<span class="ansi-green-fg">--&gt; 550</span><span class="ansi-red-fg">                                 context))
+</span><span class="ansi-green-intense-fg ansi-bold">    551</span> 
+<span class="ansi-green-intense-fg ansi-bold">    552</span>     <span class="ansi-green-fg">if</span> ensure_min_features <span class="ansi-blue-fg">&gt;</span> <span class="ansi-cyan-fg">0</span> <span class="ansi-green-fg">and</span> array<span class="ansi-blue-fg">.</span>ndim <span class="ansi-blue-fg">==</span> <span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">ValueError</span>: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required.</pre>
 </div>
-
 </div>
 
 </div>

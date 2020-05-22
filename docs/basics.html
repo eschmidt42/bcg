@@ -117,6 +117,77 @@ description: "Playground unfinished for causal modelling on various kinds of gen
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X0</th>
+      <th>X1</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.765089</td>
+      <td>0.029086</td>
+      <td>1.176720</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.415144</td>
+      <td>0.465493</td>
+      <td>1.088209</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.916878</td>
+      <td>-0.080276</td>
+      <td>1.295041</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.821110</td>
+      <td>0.430448</td>
+      <td>-0.801217</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.573608</td>
+      <td>0.237232</td>
+      <td>1.097644</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -146,6 +217,83 @@ description: "Playground unfinished for causal modelling on various kinds of gen
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X0</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.150942</td>
+      <td>0.013142</td>
+      <td>-0.008870</td>
+      <td>0.010167</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.702410</td>
+      <td>0.036707</td>
+      <td>0.016707</td>
+      <td>0.075383</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.646335</td>
+      <td>0.104335</td>
+      <td>0.003625</td>
+      <td>0.003182</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.275542</td>
+      <td>0.154818</td>
+      <td>-0.022776</td>
+      <td>0.090830</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.061228</td>
+      <td>0.119853</td>
+      <td>-0.019778</td>
+      <td>0.130860</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -211,7 +359,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCauses" class="doc_header"><code>class</code> <code>CommonCauses</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L35" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCauses</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'W'</code></em>, <strong><code>n_common_causes</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7f8398a3a510&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="CommonCauses" class="doc_header"><code>class</code> <code>CommonCauses</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L35" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCauses</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'W'</code></em>, <strong><code>n_common_causes</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7fc832b67710&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -235,7 +383,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Instruments" class="doc_header"><code>class</code> <code>Instruments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L42" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Instruments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'Z'</code></em>, <strong><code>n_instruments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_p</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7f839849e8d0&gt;</code></em>, <strong><code>rv_p_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="Instruments" class="doc_header"><code>class</code> <code>Instruments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L42" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Instruments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'Z'</code></em>, <strong><code>n_instruments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_p</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7fc8325c4950&gt;</code></em>, <strong><code>rv_p_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -259,7 +407,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="EffectModifiers" class="doc_header"><code>class</code> <code>EffectModifiers</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L49" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>EffectModifiers</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'X'</code></em>, <strong><code>n_eff_mods</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7f839849e8d0&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="EffectModifiers" class="doc_header"><code>class</code> <code>EffectModifiers</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L49" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>EffectModifiers</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'X'</code></em>, <strong><code>n_eff_mods</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv_mean</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.uniform_gen object at 0x7fc8325c4950&gt;</code></em>, <strong><code>rv_mean_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -283,7 +431,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Treatments" class="doc_header"><code>class</code> <code>Treatments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L56" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Treatments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'V'</code></em>, <strong><code>n_treatments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7f8398a3a510&gt;</code></em>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
+<h2 id="Treatments" class="doc_header"><code>class</code> <code>Treatments</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L56" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Treatments</code>(<strong><code>name</code></strong>:<code>str</code>=<em><code>'V'</code></em>, <strong><code>n_treatments</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>rv</code></strong>:<code>rv_continuous</code>=<em><code>&lt;scipy.stats._continuous_distns.norm_gen object at 0x7fc832b67710&gt;</code></em>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>=<em><code>None</code></em>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>) :: <a href="/bcg/basics#GenVars"><code>GenVars</code></a></p>
 </blockquote>
 
 </div>
@@ -337,7 +485,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
+<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
 </blockquote>
 
 </div>
@@ -361,7 +509,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L157" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>)</p>
+<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L156" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -385,7 +533,7 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>])</p>
+<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L181" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>], <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -420,8 +568,8 @@ $$t \equiv \varepsilon + W \cdot c_1 + Z \cdot c_z$$
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 15.6 ms, sys: 0 ns, total: 15.6 ms
-Wall time: 3.84 ms
+<pre>CPU times: user 0 ns, sys: 0 ns, total: 0 ns
+Wall time: 7.69 ms
 </pre>
 </div>
 </div>
@@ -455,28 +603,28 @@ Wall time: 3.84 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.404247</td>
-      <td>-0.990520</td>
+      <td>0.736602</td>
+      <td>0.281994</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.988113</td>
-      <td>0.040550</td>
+      <td>-0.492251</td>
+      <td>1.485185</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-1.386640</td>
-      <td>-1.212049</td>
+      <td>0.375947</td>
+      <td>1.623624</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.254793</td>
-      <td>-0.268714</td>
+      <td>0.483833</td>
+      <td>0.541259</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-0.634578</td>
-      <td>0.399088</td>
+      <td>-1.465136</td>
+      <td>-0.438113</td>
     </tr>
   </tbody>
 </table>
@@ -509,7 +657,7 @@ Wall time: 3.84 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
+<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
 </blockquote>
 
 </div>
@@ -533,7 +681,7 @@ Wall time: 3.84 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>])</p>
+<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L181" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>], <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -557,7 +705,7 @@ Wall time: 3.84 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L157" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>)</p>
+<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L156" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -593,7 +741,7 @@ Wall time: 3.84 ms
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>CPU times: user 0 ns, sys: 0 ns, total: 0 ns
-Wall time: 3.39 ms
+Wall time: 2.63 ms
 </pre>
 </div>
 </div>
@@ -629,32 +777,32 @@ Wall time: 3.39 ms
     <tr>
       <th>0</th>
       <td>1.0</td>
-      <td>0.820640</td>
-      <td>0.0</td>
+      <td>0.032661</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1.0</td>
-      <td>0.446746</td>
-      <td>0.0</td>
+      <td>0.436289</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1.0</td>
-      <td>0.422746</td>
-      <td>0.0</td>
+      <td>0.218769</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
-      <td>0.184581</td>
       <td>0.0</td>
+      <td>0.149460</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.0</td>
-      <td>0.792348</td>
-      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.921593</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
@@ -687,7 +835,7 @@ Wall time: 3.39 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
+<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
 </blockquote>
 
 </div>
@@ -711,7 +859,7 @@ Wall time: 3.39 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>])</p>
+<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L181" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>], <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -735,7 +883,7 @@ Wall time: 3.39 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L157" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>)</p>
+<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L156" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -770,8 +918,8 @@ Wall time: 3.39 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 0 ns, sys: 0 ns, total: 0 ns
-Wall time: 3.58 ms
+<pre>CPU times: user 15.6 ms, sys: 0 ns, total: 15.6 ms
+Wall time: 3.52 ms
 </pre>
 </div>
 </div>
@@ -805,28 +953,28 @@ Wall time: 3.58 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>-0.411759</td>
-      <td>-0.724200</td>
+      <td>-0.028788</td>
+      <td>0.438408</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.806907</td>
-      <td>-0.903091</td>
+      <td>1.899796</td>
+      <td>-0.335811</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.307164</td>
-      <td>-1.742818</td>
+      <td>1.119562</td>
+      <td>-1.250247</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-0.579316</td>
-      <td>-1.381260</td>
+      <td>-0.332850</td>
+      <td>1.308470</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.136368</td>
-      <td>0.349929</td>
+      <td>1.062409</td>
+      <td>0.357076</td>
     </tr>
   </tbody>
 </table>
@@ -894,7 +1042,7 @@ Wall time: 3.58 ms
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([0])</pre>
+<pre>array([1])</pre>
 </div>
 
 </div>
@@ -923,7 +1071,7 @@ Wall time: 3.58 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
+<h4 id="initialize" class="doc_header"><code>initialize</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize</code>(<strong><code>rv</code></strong>:<code>rv_continuous</code>, <strong><code>rv_kwargs</code></strong>:<code>dict</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>=<em><code>None</code></em>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>=<em><code>None</code></em>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>]=<em><code>10</code></em>)</p>
 </blockquote>
 
 </div>
@@ -947,7 +1095,7 @@ Wall time: 3.58 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L157" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>)</p>
+<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L156" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -971,7 +1119,7 @@ Wall time: 3.58 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>])</p>
+<h4 id="get_obs" class="doc_header"><code>get_obs</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L181" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_obs</code>(<strong><code>n</code></strong>:<code>int</code>, <strong><code>n_treatments</code></strong>:<code>int</code>, <strong><code>cc</code></strong>:<a href="/bcg/basics#CommonCauses"><code>CommonCauses</code></a>, <strong><code>ins</code></strong>:<a href="/bcg/basics#Instruments"><code>Instruments</code></a>, <strong><code>beta</code></strong>:<code>Union</code>[<code>float</code>, <code>List</code>[<code>int</code>], <code>List</code>[<code>float</code>], <code>ndarray</code>], <strong><code>treatment_is_binary</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -992,7 +1140,7 @@ Wall time: 3.58 ms
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">treat</span> <span class="o">=</span> <span class="n">Treatments</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_treatments</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">ins</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+<span class="n">treat</span> <span class="o">=</span> <span class="n">Treatments</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_treatments</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">ins</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">treatment_is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">treat</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1006,8 +1154,8 @@ Wall time: 3.58 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 0 ns, sys: 0 ns, total: 0 ns
-Wall time: 3.33 ms
+<pre>CPU times: user 62.5 ms, sys: 0 ns, total: 62.5 ms
+Wall time: 63.5 ms
 </pre>
 </div>
 </div>
@@ -1040,23 +1188,23 @@ Wall time: 3.33 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.616050</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.057216</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.979438</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.023992</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.018989</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1109,7 +1257,7 @@ Wall time: 3.33 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outcome_is_binary</span> <span class="o">=</span> <span class="kc">False</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outcome_is_binary</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">Outcomes</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">treat</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">em</span><span class="p">,</span> <span class="n">outcome_is_binary</span><span class="o">=</span><span class="n">outcome_is_binary</span><span class="p">)</span>
 <span class="n">out</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1149,23 +1297,23 @@ Wall time: 3.33 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.404163</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.342496</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.102793</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.469746</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.223167</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -1234,63 +1382,63 @@ Wall time: 3.33 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.616050</td>
-      <td>0.404247</td>
-      <td>-0.990520</td>
-      <td>-0.411759</td>
-      <td>-0.724200</td>
+      <td>2.373724</td>
+      <td>0.736602</td>
+      <td>0.281994</td>
+      <td>-0.028788</td>
+      <td>0.438408</td>
       <td>1.0</td>
-      <td>0.820640</td>
-      <td>0.0</td>
-      <td>1.404163</td>
+      <td>0.032661</td>
+      <td>1.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.057216</td>
-      <td>0.988113</td>
-      <td>0.040550</td>
-      <td>0.806907</td>
-      <td>-0.903091</td>
+      <td>4.615382</td>
+      <td>-0.492251</td>
+      <td>1.485185</td>
+      <td>1.899796</td>
+      <td>-0.335811</td>
       <td>1.0</td>
-      <td>0.446746</td>
-      <td>0.0</td>
-      <td>0.342496</td>
+      <td>0.436289</td>
+      <td>1.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.979438</td>
-      <td>-1.386640</td>
-      <td>-1.212049</td>
-      <td>1.307164</td>
-      <td>-1.742818</td>
+      <td>2.821714</td>
+      <td>0.375947</td>
+      <td>1.623624</td>
+      <td>1.119562</td>
+      <td>-1.250247</td>
       <td>1.0</td>
-      <td>0.422746</td>
-      <td>0.0</td>
-      <td>1.102793</td>
+      <td>0.218769</td>
+      <td>1.0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.023992</td>
-      <td>1.254793</td>
-      <td>-0.268714</td>
-      <td>-0.579316</td>
-      <td>-1.381260</td>
-      <td>1.0</td>
-      <td>0.184581</td>
+      <td>-0.215520</td>
+      <td>0.483833</td>
+      <td>0.541259</td>
+      <td>-0.332850</td>
+      <td>1.308470</td>
       <td>0.0</td>
-      <td>0.469746</td>
+      <td>0.149460</td>
+      <td>1.0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.018989</td>
-      <td>-0.634578</td>
-      <td>0.399088</td>
-      <td>0.136368</td>
-      <td>0.349929</td>
-      <td>0.0</td>
-      <td>0.792348</td>
-      <td>0.0</td>
-      <td>2.223167</td>
+      <td>2.743184</td>
+      <td>-1.465136</td>
+      <td>-0.438113</td>
+      <td>1.062409</td>
+      <td>0.357076</td>
+      <td>1.0</td>
+      <td>0.921593</td>
+      <td>1.0</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1496,7 +1644,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plot_target_vs_rest" class="doc_header"><code>plot_target_vs_rest</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L241" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_target_vs_rest</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
+<h4 id="plot_target_vs_rest" class="doc_header"><code>plot_target_vs_rest</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L242" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_target_vs_rest</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1653,7 +1801,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plot_var_hists" class="doc_header"><code>plot_var_hists</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L252" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_var_hists</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>bins</code></strong>:<code>int</code>=<em><code>50</code></em>)</p>
+<h4 id="plot_var_hists" class="doc_header"><code>plot_var_hists</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L253" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_var_hists</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>bins</code></strong>:<code>int</code>=<em><code>50</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1822,7 +1970,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="show_correlations" class="doc_header"><code>show_correlations</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L261" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>show_correlations</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>method</code></strong>:<code>str</code>=<em><code>'spearman'</code></em>)</p>
+<h4 id="show_correlations" class="doc_header"><code>show_correlations</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L262" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>show_correlations</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>method</code></strong>:<code>str</code>=<em><code>'spearman'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1894,7 +2042,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_Xy" class="doc_header"><code>get_Xy</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L272" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_Xy</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
+<h4 id="get_Xy" class="doc_header"><code>get_Xy</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L273" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_Xy</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1973,7 +2121,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_model_feel" class="doc_header"><code>get_model_feel</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L279" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_model_feel</code>(<strong><code>model</code></strong>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>bins</code></strong>:<code>int</code>=<em><code>50</code></em>)</p>
+<h4 id="get_model_feel" class="doc_header"><code>get_model_feel</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L280" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_model_feel</code>(<strong><code>model</code></strong>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>bins</code></strong>:<code>int</code>=<em><code>50</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2142,7 +2290,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_feature_importance" class="doc_header"><code>get_feature_importance</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L301" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_feature_importance</code>(<strong><code>m</code></strong>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>metric</code></strong>:<code>callable</code>=<em><code>'mean_squared_error'</code></em>)</p>
+<h4 id="get_feature_importance" class="doc_header"><code>get_feature_importance</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L302" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_feature_importance</code>(<strong><code>m</code></strong>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>metric</code></strong>:<code>callable</code>=<em><code>'mean_squared_error'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2264,7 +2412,7 @@ Wall time: 3.33 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_partial_dependencies" class="doc_header"><code>get_partial_dependencies</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L317" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_partial_dependencies</code>(<strong><code>model</code></strong>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>max_num_obs</code></strong>:<code>int</code>=<em><code>100</code></em>, <strong><code>max_num_ys</code></strong>:<code>int</code>=<em><code>10</code></em>)</p>
+<h4 id="get_partial_dependencies" class="doc_header"><code>get_partial_dependencies</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L318" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_partial_dependencies</code>(<strong><code>model</code></strong>, <strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>, <strong><code>max_num_obs</code></strong>:<code>int</code>=<em><code>100</code></em>, <strong><code>max_num_ys</code></strong>:<code>int</code>=<em><code>10</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2330,7 +2478,7 @@ Wall time: 1min 23s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plot_partial_dependencies" class="doc_header"><code>plot_partial_dependencies</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L352" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_partial_dependencies</code>(<strong><code>part_deps</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
+<h4 id="plot_partial_dependencies" class="doc_header"><code>plot_partial_dependencies</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L353" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_partial_dependencies</code>(<strong><code>part_deps</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2496,7 +2644,7 @@ Wall time: 8.49 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="GraphGenerator" class="doc_header"><code>class</code> <code>GraphGenerator</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L367" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GraphGenerator</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
+<h2 id="GraphGenerator" class="doc_header"><code>class</code> <code>GraphGenerator</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L368" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GraphGenerator</code>(<strong><code>obs</code></strong>:<code>DataFrame</code>, <strong><code>target</code></strong>:<code>str</code>=<em><code>'Y'</code></em>)</p>
 </blockquote>
 <p>Generates some specific directed graphs for <code>obs</code></p>
 
@@ -2534,7 +2682,7 @@ Wall time: 8.49 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_only_Xi_to_Y" class="doc_header"><code>get_only_Xi_to_Y</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L374" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_only_Xi_to_Y</code>()</p>
+<h4 id="get_only_Xi_to_Y" class="doc_header"><code>get_only_Xi_to_Y</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L375" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_only_Xi_to_Y</code>()</p>
 </blockquote>
 
 </div>
@@ -2614,7 +2762,7 @@ Wall time: 8.49 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_Xi_to_Y_with_ccs_and_such" class="doc_header"><code>get_Xi_to_Y_with_ccs_and_such</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L383" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_Xi_to_Y_with_ccs_and_such</code>(<strong><code>common_cause</code></strong>=<em><code>'W'</code></em>, <strong><code>effect_modifier</code></strong>=<em><code>'X'</code></em>, <strong><code>treatment</code></strong>=<em><code>'V'</code></em>, <strong><code>instrument</code></strong>=<em><code>'Z'</code></em>)</p>
+<h4 id="get_Xi_to_Y_with_ccs_and_such" class="doc_header"><code>get_Xi_to_Y_with_ccs_and_such</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L384" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_Xi_to_Y_with_ccs_and_such</code>(<strong><code>common_cause</code></strong>=<em><code>'W'</code></em>, <strong><code>effect_modifier</code></strong>=<em><code>'X'</code></em>, <strong><code>treatment</code></strong>=<em><code>'V'</code></em>, <strong><code>instrument</code></strong>=<em><code>'Z'</code></em>)</p>
 </blockquote>
 <p>common cause → treatment
 common cause → outcome/target
@@ -2684,7 +2832,7 @@ effect modifier → outcome/target</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="vis_g" class="doc_header"><code>vis_g</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L409" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>vis_g</code>(<strong><code>g</code></strong>:<code>DiGraph</code>, <strong><code>kind</code></strong>:<code>str</code>=<em><code>'spectral'</code></em>)</p>
+<h4 id="vis_g" class="doc_header"><code>vis_g</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L410" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>vis_g</code>(<strong><code>g</code></strong>:<code>DiGraph</code>, <strong><code>kind</code></strong>:<code>str</code>=<em><code>'spectral'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2796,7 +2944,7 @@ effect modifier → outcome/target</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_gml" class="doc_header"><code>get_gml</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L418" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_gml</code>(<strong><code>g</code></strong>:<code>DiGraph</code>)</p>
+<h4 id="get_gml" class="doc_header"><code>get_gml</code><a href="https://github.com/fastai/bcg/tree/master/bcg/basics.py#L419" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_gml</code>(<strong><code>g</code></strong>:<code>DiGraph</code>)</p>
 </blockquote>
 
 </div>
