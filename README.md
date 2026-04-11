@@ -1,4 +1,4 @@
-# Bayesian Causal Graphs - BCG
+# Bayesian Causal Graphs - BCG - archived
 > Playing with Bayesian Causal Graphs.
 
 
